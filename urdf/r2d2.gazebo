@@ -5,6 +5,12 @@
   <!-- Include the rviz description -->
   <xacro:include filename="$(find r2d2)/urdf/r2d2.urdf" />
 
+  <!-- Add some colour to the links in Gazebo to match Rviz -->
+  <gazebo reference="chassis">
+    <material>Gazebo/Black</material>
+    <pose> 0 0 0 0 0 0 </pose>
+  </gazebo>
+
 
   <!-- <gazebo> -->
   <!--   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"> -->
