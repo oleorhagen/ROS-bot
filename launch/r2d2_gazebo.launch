@@ -3,6 +3,8 @@
 <launch>
 
   <arg name="model" default="$(find r2d2)/urdf/r2d2.gazebo" />
+  <arg name="rviz" default="false" />
+
 
   <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
 
@@ -20,5 +22,9 @@
   </include>
 
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -model r2d2 -x 0 -y 0 -z 0 -urdf" output="screen" />
+
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find r2d2)/rviz/r2d2.rviz" />
+  </group>
 
 </launch>
