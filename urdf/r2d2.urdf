@@ -13,7 +13,7 @@
     <color rgba="1.0 0.0 0.0 1.0" />
   </material>
 
-
+  <!-- Not used yet -->
   <xacro:property name="body_xsize" value="0.5" />
   <xacro:property name="body_ysize" value="1.0" />
   <xacro:property name="body_zsize" value="0.3" />
