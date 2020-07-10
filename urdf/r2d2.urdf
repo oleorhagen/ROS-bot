@@ -1,7 +1,22 @@
 <?xml version="1.0"?>
 <robot name="r2d2">
+
+  <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0" />
+  </material>
+
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0" />
+  </material>
+
+  <material name="red">
+    <color rgba="1.0 0.0 0.0 1.0" />
+  </material>
+
+
   <link name="base_link">
     <visual>
+      <material name="black" />
       <geometry>
         <box size="0.5 1.0 0.3" />
       </geometry>
@@ -10,6 +25,7 @@
 
   <link name="front_suspension" >
     <visual>
+      <material name="white"/>
       <origin xyz="0 0.4 0.0" rpy="0 1.57075 0" />
       <geometry>
         <cylinder length="0.7" radius="0.1" />
@@ -25,6 +41,7 @@
 
   <link name="back_suspension" >
     <visual>
+      <material name="white"/>
       <origin xyz="0 -0.4 0.0" rpy="0 1.57075 0" />
       <geometry>
         <cylinder length="0.7" radius="0.1" />
@@ -40,6 +57,7 @@
 
   <link name="right_front_wheel" >
     <visual>
+      <material name="red"/>
       <origin xyz="0.35 0.4 0" rpy="0 1.57075 0" />
       <geometry>
         <cylinder length="0.1" radius="0.2" />
@@ -55,6 +73,7 @@
 
   <link name="left_front_wheel" >
     <visual>
+      <material name="red"/>
       <origin xyz="-0.35 0.4 0" rpy="0 1.57075 0" />
       <geometry>
         <cylinder length="0.1" radius="0.2" />
@@ -70,6 +89,7 @@
 
   <link name="right_back_wheel" >
     <visual>
+      <material name="red"/>
       <origin xyz="0.35 -0.4 0" rpy="0 1.57075 0" />
       <geometry>
         <cylinder length="0.1" radius="0.2" />
@@ -85,6 +105,7 @@
 
   <link name="left_back_wheel" >
     <visual>
+      <material name="red"/>
       <origin xyz="-0.35 -0.4 0" rpy="0 1.57075 0" />
       <geometry>
         <cylinder length="0.1" radius="0.2" />
