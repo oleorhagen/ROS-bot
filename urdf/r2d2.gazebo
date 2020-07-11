@@ -11,6 +11,36 @@
     <pose> 0 0 0 0 0 0 </pose>
   </gazebo>
 
+  <gazebo reference="front_suspension">
+    <material>Gazebo/White</material>
+    <pose> 0 0 0 0 0 0 </pose>
+  </gazebo>
+
+  <gazebo reference="back_suspension">
+    <material>Gazebo/White</material>
+    <pose> 0 0 0 0 0 0 </pose>
+  </gazebo>
+
+  <gazebo reference="right_front_wheel">
+    <material>Gazebo/Red</material>
+    <pose> 0 0 0 0 0 0 </pose>
+  </gazebo>
+
+  <gazebo reference="left_front_wheel">
+    <material>Gazebo/Red</material>
+    <pose> 0 0 0 0 0 0 </pose>
+  </gazebo>
+
+  <gazebo reference="right_back_wheel">
+    <material>Gazebo/Red</material>
+    <pose> 0 0 0 0 0 0 </pose>
+  </gazebo>
+
+  <gazebo reference="left_back_wheel">
+    <material>Gazebo/Red</material>
+    <pose> 0 0 0 0 0 0 </pose>
+  </gazebo>
+
 
   <!-- <gazebo> -->
   <!--   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"> -->
