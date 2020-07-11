@@ -78,6 +78,11 @@
         <cylinder length="0.1" radius="0.01" />
       </geometry>
     </visual>
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
   </link>
 
   <joint name="joint_front_right_steer_bar" type="revolute">
@@ -96,6 +101,11 @@
         <cylinder length="0.1" radius="0.01" />
       </geometry>
     </visual>
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
   </link>
 
   <joint name="joint_front_left_steer_bar" type="revolute">
