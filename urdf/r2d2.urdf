@@ -66,10 +66,9 @@
   </link>
 
   <joint name="front_suspension_to_base_link" type="fixed">
-    <parent link="base_link" />
+    <parent link="chassis" />
     <child link="front_suspension" />
   </joint>
-
 
   <link name="front_right_steer_bar" >
     <visual>
@@ -124,7 +123,7 @@
   </link>
 
   <joint name="back_suspension_to_base_link" type="fixed">
-    <parent link="base_link" />
+    <parent link="chassis" />
     <child link="back_suspension" />
   </joint>
 
