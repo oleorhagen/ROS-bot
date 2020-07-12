@@ -24,21 +24,37 @@
   <gazebo reference="right_front_wheel">
     <material>Gazebo/Red</material>
     <pose> 0 0 0 0 0 0 </pose>
+    <mu1 value="200.0" />
+    <mu2 value="100.0" />
+    <kp value="1000000000.0" />
+    <kd value="1.0" />
   </gazebo>
 
   <gazebo reference="left_front_wheel">
     <material>Gazebo/Red</material>
     <pose> 0 0 0 0 0 0 </pose>
+    <mu1 value="200.0" />
+    <mu2 value="100.0" />
+    <kp value="1000000000.0" />
+    <kd value="1.0" />
   </gazebo>
 
   <gazebo reference="right_back_wheel">
     <material>Gazebo/Red</material>
     <pose> 0 0 0 0 0 0 </pose>
+    <mu1 value="200.0" />
+    <mu2 value="100.0" />
+    <kp value="1000000000.0" />
+    <kd value="1.0" />
   </gazebo>
 
   <gazebo reference="left_back_wheel">
     <material>Gazebo/Red</material>
     <pose> 0 0 0 0 0 0 </pose>
+    <mu1 value="200.0" />
+    <mu2 value="100.0" />
+    <kp value="1000000000.0" />
+    <kd value="1.0" />
   </gazebo>
 
 
