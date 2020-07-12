@@ -1,0 +1,2 @@
+dependent_joints:
+    joint_right_back_wheel: { parent: joint_left_back_wheel }

@@ -8,10 +8,18 @@
 
   <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
 
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <!-- Load the parameter conf file for the 'joint_state_publisher' -->
+  <!-- <rosparam command="load" file="$(find r2d2)/conf/joint_state_publisher.yaml" ns="joint_state_publisher" /> -->
+  <rosparam command="load" file="$(find r2d2)/conf/controllers.yaml" />
+
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"  args="joint_left_back_wheel_controller joint_state_controller" respawn="false" />
+
+  jnode name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="50.0" />
+    <remap from="/joint_states" to="/r2d2/joint_states" />
   </node>
 
   <!-- We resume the logic in gazebo_ros package empty_world.launch, -->

@@ -58,11 +58,36 @@
   </gazebo>
 
 
-  <!-- <gazebo> -->
-  <!--   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"> -->
-  <!--     <robotNameSpace></robotNameSpace> -->
-  <!--   </plugin> -->
-  <!-- </gazebo> -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <!-- <robotNameSpace>r2d2</robotNameSpace> -->
+    </plugin>
+  </gazebo>
 
+  <!-- Create the transmissions for the joints in Gazebo -->
+  <!-- <transmission name="front_left_steer_bar_transmission"> -->
+  <!--   <type>transmission_interface/SimpleTransmission</type> -->
+  <!--   <actuator name="$front_left_steer_motor"> -->
+  <!--     <mechanicalReduction>1</mechanicalReduction> -->
+  <!--   </actuator> -->
+  <!--   <joint name="joint_front_left_steer_bar"> -->
+  <!--     <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+  <!--   </joint> -->
+  <!-- </transmission> -->
+
+  <!-- Load the configuration for the velocity-joint-controller -->
+  <rosparam command="load" file="$(find r2d2)/conf/controllers.yaml" />
+
+  <!-- Wheel transmissions -->
+  <transmission name="back_wheel_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_left_back_wheel">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint >
+    <actuator name="motor_left_back_wheel">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission >
 
 </robot>
