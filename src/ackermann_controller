@@ -1,0 +1,77 @@
+#! /usr/bin/python
+
+# A simple Ackermann steering controller for the RC rover bot
+
+# TODO - What is the max steering of the motors?
+# and how to handle it?
+
+from math import pi
+
+import rospy
+
+from std_msgs.msg import Float64, Float64MultiArray
+from geometry_msgs.msg import Twist
+
+def rospy_is_running():
+    return not rospy.is_shutdown()
+
+class AckermannController(object):
+
+    def __init__(self):
+        rospy.loginfo("Initializing the 'ackermann_controller'")
+        rospy.init_node("ackermann_controller")
+        rospy.on_shutdown(self.shutdown)
+        self.max_omega = pi/2
+        self.max_velocity = 1 # m/s
+
+        # Subscribe to ~/cmd_vel
+        # Publish to 'joint_back_wheels_controller' and the two steering controllers:
+        # - joint_front_left_steer_bar_controller
+        # - joint_front_right_steer_bar_controller
+        self.velocity_publisher = rospy.Publisher("/r2d2/joint_back_wheels_controller/command", Float64MultiArray, queue_size=1)
+        rospy.Subscriber("/r2d2/cmd_vel", Twist, self.cmd_vel_callback) # Get the speed and steering angle
+
+        self.steering_front_left_publisher = rospy.Publisher("/r2d2/joint_front_left_steer_bar", Float64, queue_size=1)
+        self.steering_front_right_publisher = rospy.Publisher("/r2d2/joint_front_left_steer_bar", Float64, queue_size=1)
+
+        self.velocity = 0
+        self.omega = 0
+
+        self.rate = rospy.Rate(50) # Hardcoded for now
+
+    def spin(self):
+        """Run the control loop"""
+
+        last_time = rospy.get_time()
+
+        while rospy_is_running():
+            # rospy.loginfo("Spinning ackermann controller. v: {}, o: {}".format(self.velocity, self.omega))
+            # For now, simply run the vehicle forwards
+            data = Float64MultiArray(data=[self.velocity, self.velocity])
+            self.velocity_publisher.publish(data)
+            d = Float64(self.omega)
+            # Publish the steering angles also
+            self.steering_front_right_publisher.publish(d)
+            self.steering_front_left_publisher.publish(d)
+            self.rate.sleep()
+
+    def cmd_vel_callback(self, twist):
+        """Handle the 'cmd_vel' subscription"""
+        # rospy.loginfo("Received message: {}".format(twist))
+        rospy.loginfo("v: {}, o: {}".format(self.velocity, self.omega))
+        v = twist.linear
+        o = twist.angular
+        self.velocity += v.x
+        self.omega += o.z
+
+    def shutdown(self):
+        self.velocity = 0
+        self.omega = 0
+        self.velocity_publisher.publish(Float64MultiArray(data=[0, 0]))
+        rospy.sleep(1)
+
+
+if __name__ == "__main__":
+    ctrl = AckermannController()
+    ctrl.spin()
+
