@@ -41,22 +41,11 @@
     </plugin>
   </gazebo>
 
-  <!-- Create the transmissions for the joints in Gazebo -->
-  <!-- <transmission name="front_left_steer_bar_transmission"> -->
-  <!--   <type>transmission_interface/SimpleTransmission</type> -->
-  <!--   <actuator name="$front_left_steer_motor"> -->
-  <!--     <mechanicalReduction>1</mechanicalReduction> -->
-  <!--   </actuator> -->
-  <!--   <joint name="joint_front_left_steer_bar"> -->
-  <!--     <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
-  <!--   </joint> -->
-  <!-- </transmission> -->
-
   <!-- Wheel transmissions -->
   <transmission name="left_back_wheel_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint_left_back_wheel">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint >
     <actuator name="motor_left_back_wheel">
       <mechanicalReduction>1</mechanicalReduction>
@@ -66,7 +55,7 @@
   <transmission name="right_back_wheel_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint_right_back_wheel">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </joint >
     <actuator name="motor_right_back_wheel">
       <mechanicalReduction>1</mechanicalReduction>
