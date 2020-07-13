@@ -75,9 +75,6 @@
   <!--   </joint> -->
   <!-- </transmission> -->
 
-  <!-- Load the configuration for the velocity-joint-controller -->
-  <rosparam command="load" file="$(find r2d2)/conf/controllers.yaml" />
-
   <!-- Wheel transmissions -->
   <transmission name="back_wheel_transmission">
     <type>transmission_interface/SimpleTransmission</type>
