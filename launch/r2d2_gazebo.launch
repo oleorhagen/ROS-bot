@@ -14,7 +14,15 @@
   <rosparam command="load" file="$(find r2d2)/conf/controllers.yaml" />
 
   <!-- Load the controllers -->
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"  args="joint_left_back_wheel_controller joint_state_controller" respawn="false" ns="/r2d2" >
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"  args="
+      joint_left_back_wheel_controller
+      joint_right_back_wheel_controller
+
+      joint_front_right_steer_bar_controller
+      joint_front_left_steer_bar_controller
+
+      joint_state_controller
+" respawn="false" ns="/r2d2" >
   </node>
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
