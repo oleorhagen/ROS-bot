@@ -5,15 +5,19 @@ r2d2:
         publish_rate: 50
                  
     # Wheel motor controllers
-    joint_left_back_wheel_controller:
-        type: velocity_controllers/JointVelocityController
-        joint: joint_left_back_wheel
-        pid: { p: 1.0, i: 1.0, d: 1.0 }
+    joint_back_wheels_controller:
+        type: velocity_controllers/JointGroupVelocityController
+        joints:
+            - joint_left_back_wheel
+            - joint_right_back_wheel
+        gains:
+            - { p: 1.0, i: 1.0, d: 1.0 }
+            - { p: 1.0, i: 1.0, d: 1.0 }
 
-    joint_right_back_wheel_controller:
-        type: velocity_controllers/JointVelocityController
-        joint: joint_right_back_wheel
-        pid: { p: 1000.0, i: 10.0, d: 1.0 }
+    # joint_right_back_wheel_controller:
+    #     type: velocity_controllers/JointVelocityController
+    #     joint: joint_right_back_wheel
+    #     pid: { p: 1000.0, i: 10.0, d: 1.0 }
 
     # Front steering
 

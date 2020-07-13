@@ -15,8 +15,7 @@
 
   <!-- Load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"  args="
-      joint_left_back_wheel_controller
-      joint_right_back_wheel_controller
+      joint_back_wheels_controller
 
       joint_front_right_steer_bar_controller
       joint_front_left_steer_bar_controller
