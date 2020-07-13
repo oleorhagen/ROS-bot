@@ -44,7 +44,7 @@
     <arg name="debug" default="false"/>
   </include>
 
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -model r2d2 -x 0 -y 0 -z 0 -R 0 -P 0 -Y 0 -urdf" output="screen" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -model r2d2 -x 0 -y 0 -z 1 -R 0 -P 0 -Y 0 -urdf" output="screen" />
 
   <group if="$(arg rviz)">
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find r2d2)/rviz/r2d2.rviz" />
