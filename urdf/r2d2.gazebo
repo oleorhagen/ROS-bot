@@ -53,13 +53,42 @@
   <!-- </transmission> -->
 
   <!-- Wheel transmissions -->
-  <transmission name="back_wheel_transmission">
+  <transmission name="left_back_wheel_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint_left_back_wheel">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint >
     <actuator name="motor_left_back_wheel">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission >
+
+  <transmission name="right_back_wheel_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_right_back_wheel">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint >
+    <actuator name="motor_right_back_wheel">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission >
+
+  <transmission name="left_front_steer_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_front_left_steer_bar">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint >
+    <actuator name="motor_left_front_steer_bar">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission >
+
+  <transmission name="right_front_steer_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_front_right_steer_bar">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint >
+    <actuator name="motor_right_front_steer_bar">
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission >
