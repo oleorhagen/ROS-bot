@@ -60,7 +60,7 @@
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <!-- <robotNameSpace>r2d2</robotNameSpace> -->
+      <robotNamespace>/r2d2</robotNamespace>
     </plugin>
   </gazebo>
 

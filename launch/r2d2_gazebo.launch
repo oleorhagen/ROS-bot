@@ -10,12 +10,14 @@
 
   <!-- Load the parameter conf file for the 'joint_state_publisher' -->
   <!-- <rosparam command="load" file="$(find r2d2)/conf/joint_state_publisher.yaml" ns="joint_state_publisher" /> -->
+
   <rosparam command="load" file="$(find r2d2)/conf/controllers.yaml" />
 
   <!-- Load the controllers -->
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"  args="joint_left_back_wheel_controller joint_state_controller" respawn="false" />
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"  args="joint_left_back_wheel_controller joint_state_controller" respawn="false" ns="/r2d2" >
+  </node>
 
-  jnode name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="50.0" />
@@ -34,7 +36,7 @@
     <arg name="debug" default="false"/>
   </include>
 
-  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -model r2d2 -x 0 -y 0 -z 0 -urdf" output="screen" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -model r2d2 -x 0 -y 0 -z 0 -R 0 -P 0 -Y 0 -urdf" output="screen" />
 
   <group if="$(arg rviz)">
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find r2d2)/rviz/r2d2.rviz" />

@@ -1,4 +1,4 @@
-# r2d2:
+r2d2:
     # Publish all joint states
     joint_state_controller:
         type: joint_state_controller/JointStateController
@@ -8,4 +8,4 @@
     joint_left_back_wheel_controller:
         type: effort_controllers/JointPositionController
         joint: joint_left_back_wheel
-        pid: { p: 10.0, i: 0.1, d: 10.0 }
+        pid: { p: 1.0, i: 0.1, d: 1.0 }
