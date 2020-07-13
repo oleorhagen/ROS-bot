@@ -8,53 +8,30 @@
   <!-- Add some colour to the links in Gazebo to match Rviz -->
   <gazebo reference="chassis">
     <material>Gazebo/Black</material>
-    <pose> 0 0 0 0 0 0 </pose>
   </gazebo>
 
   <gazebo reference="front_suspension">
     <material>Gazebo/White</material>
-    <pose> 0 0 0 0 0 0 </pose>
   </gazebo>
 
   <gazebo reference="back_suspension">
     <material>Gazebo/White</material>
-    <pose> 0 0 0 0 0 0 </pose>
   </gazebo>
 
   <gazebo reference="right_front_wheel">
     <material>Gazebo/Red</material>
-    <pose> 0 0 0 0 0 0 </pose>
-    <mu1 value="200.0" />
-    <mu2 value="100.0" />
-    <kp value="1000000000.0" />
-    <kd value="1.0" />
   </gazebo>
 
   <gazebo reference="left_front_wheel">
     <material>Gazebo/Red</material>
-    <pose> 0 0 0 0 0 0 </pose>
-    <mu1 value="200.0" />
-    <mu2 value="100.0" />
-    <kp value="1000000000.0" />
-    <kd value="1.0" />
   </gazebo>
 
   <gazebo reference="right_back_wheel">
     <material>Gazebo/Red</material>
-    <pose> 0 0 0 0 0 0 </pose>
-    <mu1 value="200.0" />
-    <mu2 value="100.0" />
-    <kp value="1000000000.0" />
-    <kd value="1.0" />
   </gazebo>
 
   <gazebo reference="left_back_wheel">
     <material>Gazebo/Red</material>
-    <pose> 0 0 0 0 0 0 </pose>
-    <mu1 value="200.0" />
-    <mu2 value="100.0" />
-    <kp value="1000000000.0" />
-    <kd value="1.0" />
   </gazebo>
 
 
