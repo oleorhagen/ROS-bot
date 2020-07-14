@@ -13,6 +13,10 @@
     <color rgba="1.0 0.0 0.0 1.0" />
   </material>
 
+  <material name="green">
+    <color rgba="0.0 1.0 0.0 1.0" />
+  </material>
+
   <material name="yellow">
     <color rgba="1.0 1.0 0.0 1.0" />
   </material>
@@ -252,6 +256,35 @@
     <child link="left_back_wheel" />
     <origin xyz="-0.35 -0.4 0" />
     <axis xyz="1 0 0"/>
+  </joint>
+
+  <!-- -\-\-\- -->
+  <!-- Sensors -->
+  <!-- -\-\-\- -->
+  <link name="lidar_cylinder">
+    <visual>
+      <!-- <origin xyz="0 0 0.15" /> -->
+      <material name="green" />
+      <geometry>
+        <cylinder length="0.1" radius="0.1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2" />
+      <inertia ixx="${(1/12)*0.2*(3*0.1*0.1 + 0.1*0.1)}"     ixy="0.0"   ixz="0.0" iyy="${(1/12)*0.2*(3*0.1*0.1 + 0.1*0.1)}" iyz="0.0" izz="${(1/12)*0.2*(0.1*0.1)}" />
+    </inertial>
+  </link>
+
+  <joint name="joint_lidar_cylinder" type="fixed">
+    <origin xyz="0 0 0.2" />
+    <parent link="chassis" />
+    <child link="lidar_cylinder" />
   </joint>
 
 </robot>
