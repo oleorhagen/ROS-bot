@@ -35,6 +35,7 @@ r2d2:
 
         # Base frame_id
         # base_frame_id: base_footprint #default: base_link
+        base_frame_id: base_link
 
         # Odom frame_id
         odom_frame_id: odom
