@@ -38,6 +38,7 @@
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/r2d2</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
   </gazebo>
 
@@ -65,7 +66,7 @@
   <transmission name="left_front_steer_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint_front_left_steer_bar">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint >
     <actuator name="motor_left_front_steer_bar">
       <mechanicalReduction>1</mechanicalReduction>
@@ -75,7 +76,7 @@
   <transmission name="right_front_steer_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint_front_right_steer_bar">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint >
     <actuator name="motor_right_front_steer_bar">
       <mechanicalReduction>1</mechanicalReduction>

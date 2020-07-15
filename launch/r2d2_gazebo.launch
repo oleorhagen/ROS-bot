@@ -15,10 +15,8 @@
 
   <!-- Load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"  args="
-      joint_back_wheels_controller
 
-      joint_front_right_steer_bar_controller
-      joint_front_left_steer_bar_controller
+      ackermann_steering_controller
 
       joint_state_controller
 " respawn="false" ns="/r2d2" >
