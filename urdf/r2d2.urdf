@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <robot name="r2d2" xmlns:xacro="http://www.ros.org/wiki/xacro"  >
 
+
+  <xacro:property name="body_mass" value="2.0" />
+
+  <xacro:property name="chassis_xsize" value="1.0" />
+  <xacro:property name="chassis_ysize" value="0.5" />
+  <xacro:property name="chassis_zsize" value="0.3" />
+
   <material name="black">
     <color rgba="0.0 0.0 0.0 1.0" />
   </material>
@@ -25,36 +32,70 @@
     <color rgba="1.0 1.0 0.0 1.0" />
   </material>
 
+  <xacro:macro name="box_inertia" params="mass length width height x:=0 y:=0 z:=0 roll:=0 pitch:=0 yaw:=0" >
+    <inertial>
+      <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}" />
+      <mass value="${mass}" />
+      <inertia ixx="${mass / 12.0 * (width * width + height * height)}"     ixy="0.0"   ixz="0.0" iyy="${mass / 12.0 * (length * length + height * height)}" iyz="0.0" izz="${mass / 12.0 * (length * length + width * width)}" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:macro name="cylinder_inertia" params="mass length radius x:=0 y:=0 z:=0 roll:=0 pitch:=0 yaw:=0" >
+    <inertial>
+      <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}" />
+      <mass value="${mass}"/>
+      <inertia
+          ixx="${mass / 12.0 * (3 * radius * radius + width * width)}" ixy="0.0" ixz="0.0"
+          iyy="${mass / 12.0 * (3 * radius * radius + width * width)}" iyz="0.0"
+          izz="${mass / 2.0 * (radius * radius)}"/>
+  </inertial>  </xacro:macro>
+
+  <xacro:macro name="custom_box" params="link_name color:=black size_x size_y size_z x:=0 y:=0 z:=0 roll:=0 pitch:=0 yaw:=0 joint_name parent_link child_link link_type:=fixed" >
+    <link name="${link_name}">
+      <visual>
+        <material name="${color}" />
+        <geometry>
+          <box size="${size_x} ${size_y} ${size_z}" />
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <box size="${size_x} ${size_y} ${size_z}" />
+        </geometry>
+      </collision>
+      <xacro:box_inertia mass="${body_mass}" length="${size_x}" width="${size_y}" height="${size_z}" x="${x}" y="${y}" z="${z}" roll="${roll}" pitch="${pitch}" yaw="${yaw}" />
+    </link>
+    <joint name="${joint_name}" type="${link_type}">
+      <parent link="${parent_link}" />
+      <child link="${child_link}" />
+    </joint>
+  </xacro:macro>
+
+  <xacro:macro name="custom_cylinder" params="name material mass length radius x:=0 y:=0 z:=0 roll:=0 pitch:=0 yaw:=0" >
+    <link name="${name}">
+      <visual>
+        <material name="${material}"/>
+        <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}" />
+        <geometry>
+          <cylinder length="${length}" radius="${radius}" />
+        </geometry>
+      </visual>
+      <collision>
+        <cylinder length="${length}" radius="${radius}" />
+        <origin xyz="${x} ${y} ${z}" rpy="${roll} ${pitch} ${yaw}" />
+        <geometry>
+          <cylinder length="${length}" radius="${radius}" />
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertia mass="${body_mass}" length="${size_x}" width="${size_y}" height="${size_z}" x="${x}" y="${y}" z="${z}" roll="${roll}" pitch="${pitch}" yaw="${yaw}" />
+      </link>
+  </xacro:macro>
+
   <!-- Not used yet -->
-  <xacro:property name="body_xsize" value="0.5" />
-  <xacro:property name="body_ysize" value="1.0" />
-  <xacro:property name="body_zsize" value="0.3" />
-  <xacro:property name="body_mass" value="2.0" />
 
   <link name="base_link" />
 
-  <link name="chassis">
-    <visual>
-      <material name="black" />
-      <geometry>
-        <box size="0.5 1.0 0.3" />
-      </geometry>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.5 1.0 0.3" />
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="2.0" />
-      <inertia ixx="${(1/12)*2*(1*1 + 0.3*0.3)}"     ixy="0.0"   ixz="0.0" iyy="${(1/12)*2*(0.5*0.5 + 0.3*0.3)}" iyz="0.0" izz="${(1/12)*2*(0.5*0.5 + 1*1)}" />
-    </inertial>
-  </link>
-
-  <joint name="chassis_to_base_link" type="fixed">
-    <parent link="base_link" />
-    <child link="chassis" />
-  </joint>
+  <xacro:custom_box link_name="chassis" size_x="${chassis_xsize}" size_y="${chassis_ysize}" size_z="${chassis_zsize}" joint_name="joint_chassis_to_base" parent_link="base_link" child_link="chassis" />
 
   <link name="front_steer_bar" >
     <visual>
