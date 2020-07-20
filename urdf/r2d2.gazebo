@@ -145,7 +145,7 @@
       <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
         <!-- <topicName>/gopigo/scan</topicName> -->
         <topicName>scan</topicName>
-        <frameName>base_scan</frameName>
+        <frameName>lidar_cylinder</frameName>
       </plugin>
     </sensor>
   </gazebo>
