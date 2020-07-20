@@ -26,7 +26,8 @@
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="50.0" />
-    <remap from="/joint_states" to="/r2d2/joint_states" />
+    <!-- When this is enabled, front wheels don't show up in Rviz :/ -->
+    <!-- <remap from="/joint_states" to="/r2d2/joint_states" /> -->
   </node>
 
   <!-- We resume the logic in gazebo_ros package empty_world.launch, -->
