@@ -6,7 +6,7 @@
   <arg name="rviz" default="false" />
 
 
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
 
   <!-- Load the parameter conf file for the 'joint_state_publisher' -->
   <!-- <rosparam command="load" file="$(find r2d2)/conf/joint_state_publisher.yaml" ns="joint_state_publisher" /> -->
