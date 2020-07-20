@@ -16,7 +16,7 @@ r2d2:
     ackermann_steering_controller:
         type: ackermann_steering_controller/AckermannSteeringController
         rear_wheel: 'joint_left_back_wheel'
-        front_steer: 'joint_front_right_steer_bar'
+        front_steer: 'joint_front_steer_bar'
         pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
         twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
 
