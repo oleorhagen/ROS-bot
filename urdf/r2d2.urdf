@@ -13,18 +13,18 @@
   <xacro:property name="front_axel_xpos" value="${chassis_xsize/2 - wheel_radius/2}" />
   <xacro:property name="back_axel_xpos" value="${-chassis_xsize/2 + wheel_radius/2}" />
 
-  <xacro:property name="wheel_mass" value="1.0" />
+  <xacro:property name="wheel_mass" value="0.5" />
   <xacro:property name="wheel_radius" value="0.2" />
   <xacro:property name="wheel_width" value="0.2" />
 
   <xacro:property name="wheel_speed_effort" value="10" />
   <xacro:property name="wheel_speed_velocity" value="10" />
-  <xacro:property name="wheel_swing_effort" value="10" />
+  <xacro:property name="wheel_swing_effort" value="100" />
   <xacro:property name="wheel_swing_velocity" value="5.0" />
   <xacro:property name="wheel_swing_limit" value="0.3" />
 
 
-  <xacro:property name="steer_bar_mass" value="0.5" />
+  <xacro:property name="steer_bar_mass" value="0.1" />
 
   <material name="black">
     <color rgba="0.0 0.0 0.0 1.0" />
