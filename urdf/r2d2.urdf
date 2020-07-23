@@ -2,7 +2,7 @@
 <robot name="r2d2" xmlns:xacro="http://www.ros.org/wiki/xacro"  >
 
 
-  <xacro:property name="body_mass" value="4.0" />
+  <xacro:property name="body_mass" value="6.0" />
 
   <xacro:property name="chassis_xsize" value="1.0" />
   <xacro:property name="chassis_ysize" value="0.5" />
@@ -13,6 +13,7 @@
   <xacro:property name="front_axel_xpos" value="${chassis_xsize/2 - wheel_radius/2}" />
   <xacro:property name="back_axel_xpos" value="${-chassis_xsize/2 + wheel_radius/2}" />
 
+  <xacro:property name="wheel_mass" value="1.0" />
   <xacro:property name="wheel_radius" value="0.2" />
   <xacro:property name="wheel_width" value="0.2" />
 
@@ -119,7 +120,7 @@
   </joint>
 
 
-  <xacro:custom_cylinder link_name="front_wheel" color="yellow" mass="0.1" length="0.05" radius="0.05" roll="${pi/2}" />
+  <xacro:custom_cylinder link_name="front_wheel" color="yellow" mass="${wheel_mass}" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
 
   <joint name="joint_front_wheel" type="continuous">
     <parent link="front_steer_bar" />
@@ -129,7 +130,7 @@
     <limit lower="-0.3" upper="0.3" effort="0.0" velocity="10" />
   </joint>
 
-  <xacro:custom_cylinder link_name="back_wheel" color="red" mass="0.1" length="${wheel_width/4}" radius="${wheel_radius/4}" roll="${pi/2}" />
+  <xacro:custom_cylinder link_name="back_wheel" color="red" mass="${wheel_mass}" length="${wheel_width/4}" radius="${wheel_radius/4}" roll="${pi/2}" />
 
   <joint name="joint_back_wheel" type="continuous">
     <parent link="chassis" />
@@ -139,7 +140,7 @@
     <limit lower="-0.3" upper="0.3" effort="100" velocity="10" />
   </joint>
 
-  <xacro:custom_cylinder link_name="left_back_wheel" color="red" mass="0.1" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
+  <xacro:custom_cylinder link_name="left_back_wheel" color="red" mass="${wheel_mass}" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
 
   <joint name="joint_left_back_wheel" type="continuous">
     <parent link="chassis" />
@@ -150,7 +151,7 @@
   </joint>
 
 
-  <xacro:custom_cylinder link_name="right_back_wheel" color="red" mass="0.1" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
+  <xacro:custom_cylinder link_name="right_back_wheel" color="red" mass="${wheel_mass}" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
 
   <joint name="joint_right_back_wheel" type="continuous">
     <mimic joint="joint_left_back_wheel" />
@@ -173,7 +174,7 @@
   </joint>
 
 
-  <xacro:custom_cylinder link_name="left_front_wheel" color="red" mass="0.1" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
+  <xacro:custom_cylinder link_name="left_front_wheel" color="red" mass="${wheel_mass}" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
 
   <joint name="joint_left_front_wheel" type="continuous">
     <parent link="left_front_steer_bar" />
@@ -196,7 +197,7 @@
 
 
 
-  <xacro:custom_cylinder link_name="right_front_wheel" color="red" mass="0.1" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
+  <xacro:custom_cylinder link_name="right_front_wheel" color="red" mass="${wheel_mass}" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
 
   <joint name="joint_right_front_wheel" type="continuous">
     <parent link="right_front_steer_bar" />
