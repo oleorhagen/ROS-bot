@@ -73,6 +73,29 @@
     </actuator>
   </transmission >
 
+  <transmission name="left_front_steer_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_left_front_steer_bar">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint >
+    <actuator name="motor_left_front_steer_bar">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission >
+
+  <transmission name="right_front_steer_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="joint_right_front_steer_bar">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint >
+    <actuator name="motor_right_front_steer_bar">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission >
+
+
+
+
   <!-- Sensors -->
 
   <!-- Camera (PiCam) -->
