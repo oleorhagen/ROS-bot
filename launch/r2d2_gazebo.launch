@@ -13,12 +13,17 @@
 
   <rosparam command="load" file="$(find r2d2)/conf/controllers.yaml" />
 
+  <rosparam file="$(find r2d2)/conf/control_steer_bot_hardware_gazebo.yaml" command="load" />
+  <rosparam command="load" file="$(find r2d2)/conf/ctrl_gains.yaml" />
+
   <!-- Load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"  args="
 
+      joint_state_controller
+
       ackermann_steering_controller
 
-      joint_state_controller
+
 " respawn="false" ns="/r2d2" >
   </node>
 
@@ -28,6 +33,10 @@
     <param name="publish_frequency" type="double" value="50.0" />
     <!-- When this is enabled, front wheels don't show up in Rviz :/ -->
     <!-- <remap from="/joint_states" to="/r2d2/joint_states" /> -->
+  </node>
+
+  <node pkg="rqt_robot_steering" type="rqt_robot_steering" name="rqt_robot_steering" >
+    <param name="default_topic" value="/r2d2/ackermann_steering_controller/cmd_vel"/>
   </node>
 
   <!-- We resume the logic in gazebo_ros package empty_world.launch, -->

@@ -129,6 +129,15 @@
     <limit lower="-0.3" upper="0.3" effort="0.0" velocity="10" />
   </joint>
 
+  <xacro:custom_cylinder link_name="back_wheel" color="red" mass="0.1" length="${wheel_width/4}" radius="${wheel_radius/4}" roll="${pi/2}" />
+
+  <joint name="joint_back_wheel" type="continuous">
+    <parent link="chassis" />
+    <child link="back_wheel" />
+    <origin xyz="${back_axel_xpos} 0 ${axel_zpos}" />
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.3" upper="0.3" effort="100" velocity="10" />
+  </joint>
 
   <xacro:custom_cylinder link_name="left_back_wheel" color="red" mass="0.1" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
 
