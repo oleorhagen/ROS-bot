@@ -132,7 +132,7 @@
   <joint name="joint_left_back_wheel" type="continuous">
     <parent link="chassis" />
     <child link="left_back_wheel" />
-    <origin xyz="${back_axel_xpos} ${-axel_width/2} ${axel_zpos}" />
+    <origin xyz="${back_axel_xpos} ${axel_width/2} ${axel_zpos}" />
     <axis xyz="0 1 0"/>
     <limit lower="-0.3" upper="0.3" effort="100" velocity="10" />
   </joint>
@@ -144,31 +144,53 @@
     <mimic joint="joint_left_back_wheel" />
     <parent link="chassis" />
     <child link="right_back_wheel" />
-    <origin xyz="${back_axel_xpos} ${axel_width/2} ${axel_zpos}" />
+    <origin xyz="${back_axel_xpos} ${-axel_width/2} ${axel_zpos}" />
     <axis xyz="0 1 0"/>
     <limit lower="-0.3" upper="0.3" effort="100" velocity="10" />
+  </joint>
+
+
+  <xacro:custom_cylinder link_name="left_front_steer_bar" color="yellow" mass="0.1" length="0.1" radius="0.01" roll="${pi/2}" yaw="${pi/2}" />
+
+  <joint name="joint_left_front_steer_bar" type="revolute">
+    <origin xyz="${front_axel_xpos} ${axel_width/2} ${axel_zpos}" />
+    <parent link="chassis" />
+    <child link="left_front_steer_bar" />
+    <limit lower="-0.3" upper="0.3" effort="100" velocity="10" />
+    <axis xyz="0 0 1" />
   </joint>
 
 
   <xacro:custom_cylinder link_name="left_front_wheel" color="red" mass="0.1" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
 
   <joint name="joint_left_front_wheel" type="continuous">
-    <parent link="chassis" />
+    <parent link="left_front_steer_bar" />
     <child link="left_front_wheel" />
-    <origin xyz="${front_axel_xpos} ${-axel_width/2} ${axel_zpos}" />
+    <!-- <origin xyz="${front_axel_xpos} ${-axel_width/2} ${axel_zpos}" /> -->
     <axis xyz="0 1 0"/>
-    <limit lower="-0.3" upper="0.3" effort="100" velocity="10" />
+    <limit lower="-0.3" upper="0.3" effort="0" velocity="10" />
   </joint>
+
+
+  <xacro:custom_cylinder link_name="right_front_steer_bar" color="yellow" mass="0.1" length="0.1" radius="0.01" roll="${pi/2}" yaw="${pi/2}" />
+
+  <joint name="joint_right_front_steer_bar" type="revolute">
+    <origin xyz="${front_axel_xpos} ${-axel_width/2} ${axel_zpos}" />
+    <parent link="chassis" />
+    <child link="right_front_steer_bar" />
+    <limit lower="-0.3" upper="0.3" effort="100" velocity="10" />
+    <axis xyz="0 0 1" />
+  </joint>
+
 
 
   <xacro:custom_cylinder link_name="right_front_wheel" color="red" mass="0.1" length="${wheel_width}" radius="${wheel_radius}" roll="${pi/2}" />
 
   <joint name="joint_right_front_wheel" type="continuous">
-    <parent link="chassis" />
+    <parent link="right_front_steer_bar" />
     <child link="right_front_wheel" />
-    <origin xyz="${front_axel_xpos} ${axel_width/2} ${axel_zpos}" />
     <axis xyz="0 1 0"/>
-    <limit lower="-0.3" upper="0.3" effort="100" velocity="10" />
+    <limit lower="-0.3" upper="0.3" effort="0" velocity="10" />
   </joint>
 
 
