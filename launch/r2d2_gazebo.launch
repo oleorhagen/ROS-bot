@@ -23,7 +23,6 @@
 
       ackermann_steering_controller
 
-
 " respawn="false" ns="/r2d2" >
   </node>
 
