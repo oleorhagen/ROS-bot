@@ -81,29 +81,29 @@ r2d2:
     #     pid: { p: 1.0, i: 0.1, d: 1.0 }
 
 
-    gazebo_ros_control:   
-        pid_gains:
-            joint_left_back_wheel:
-                p: 100000.0
-                i: 10.0
-                d: 0.50
+    # gazebo_ros_control:   
+    #     pid_gains:
+    #         joint_left_back_wheel:
+    #             p: 100000.0
+    #             i: 10.0
+    #             d: 0.50
 
-            joint_right_back_wheel:
-                p: 100000.0
-                i: 10.0
-                d: 0.50
+    #         joint_right_back_wheel:
+    #             p: 100000.0
+    #             i: 10.0
+    #             d: 0.50
 
-            joint_front_steer_bar:
-                p: 100000.0
-                i: 10.0
-                d: 0.50
+    #         joint_front_steer_bar:
+    #             p: 100000.0
+    #             i: 10.0
+    #             d: 0.50
 
-            joint_left_front_steer_bar:
-                p: 100000.0
-                i: 10.0
-                d: 0.50
+    #         joint_left_front_steer_bar:
+    #             p: 100000.0
+    #             i: 10.0
+    #             d: 0.50
 
-            joint_right_front_steer_bar:
-                p: 100000.0
-                i: 10.0
-                d: 0.50
+    #         joint_right_front_steer_bar:
+    #             p: 100000.0
+    #             i: 10.0
+    #             d: 0.50
