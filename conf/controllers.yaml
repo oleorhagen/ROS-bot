@@ -5,23 +5,24 @@ r2d2:
         publish_rate: 50
                  
     # Wheel motor controllers
-    joint_back_wheels_controller:
-        type: velocity_controllers/JointGroupVelocityController
-        joints:
-            - joint_left_back_wheel
-            - joint_right_back_wheel
-        gains:
-            - { p: 1.0, i: 1.0, d: 1.0 }
-            - { p: 1.0, i: 1.0, d: 1.0 }
+    # joint_back_wheels_controller:
+    #     type: velocity_controllers/JointGroupVelocityController
+    #     joints:
+    #         - joint_left_back_wheel
+    #         - joint_right_back_wheel
+    #     gains:
+    #         - { p: 1.0, i: 1.0, d: 1.0 }
+    #         - { p: 1.0, i: 1.0, d: 1.0 }
+
     ackermann_steering_controller:
         type: ackermann_steering_controller/AckermannSteeringController
-        rear_wheel: 'joint_left_back_wheel'
-        front_steer: 'joint_front_steer_bar'
+        rear_wheel: 'joint_right_back_wheel'
+        front_steer: 'joint_left_front_steer_bar'
         pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
         twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
 
-        wheel_separation_h : 1.0
-        wheel_radius : 0.3
+        wheel_separation_h : 0.8 # TODO - Figure out this exactly (Should be pretty close)
+        wheel_radius : 0.2
 
         # Wheel separation and radius multipliers for odometry calibration.
         wheel_separation_h_multiplier: 1.0 # default: 1.0
@@ -67,14 +68,42 @@ r2d2:
     #     joint: joint_right_back_wheel
     #     pid: { p: 1000.0, i: 10.0, d: 1.0 }
 
-    # Front steering
+    # # Front steering
 
-    joint_front_right_steer_bar_controller:
-        type: effort_controllers/JointPositionController
-        joint: joint_front_right_steer_bar
-        pid: { p: 1.0, i: 0.1, d: 1.0 }
+    # joint_front_right_steer_bar_controller:
+    #     type: effort_controllers/JointPositionController
+    #     joint: joint_front_right_steer_bar
+    #     pid: { p: 1.0, i: 0.1, d: 1.0 }
 
-    joint_front_left_steer_bar_controller:
-        type: effort_controllers/JointPositionController
-        joint: joint_front_left_steer_bar
-        pid: { p: 1.0, i: 0.1, d: 1.0 }
+    # joint_front_left_steer_bar_controller:
+    #     type: effort_controllers/JointPositionController
+    #     joint: joint_front_left_steer_bar
+    #     pid: { p: 1.0, i: 0.1, d: 1.0 }
+
+
+    gazebo_ros_control:   
+        pid_gains:
+            joint_left_back_wheel:
+                p: 100.0
+                i: 0.01 
+                d: 10.0
+
+            joint_right_back_wheel:
+                p: 100.0
+                i: 0.01 
+                d: 10.0
+
+            joint_front_steer_bar:
+                p: 100.0
+                i: 0.01 
+                d: 10.0
+
+            joint_left_front_steer_bar:
+                p: 100.0
+                i: 0.01 
+                d: 10.0
+
+            joint_right_front_steer_bar:
+                p: 100.0
+                i: 0.01 
+                d: 10.0
