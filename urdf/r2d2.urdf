@@ -2,7 +2,7 @@
 <robot name="r2d2" xmlns:xacro="http://www.ros.org/wiki/xacro"  >
 
 
-  <xacro:property name="body_mass" value="2.0" />
+  <xacro:property name="body_mass" value="4.0" />
 
   <xacro:property name="chassis_xsize" value="1.0" />
   <xacro:property name="chassis_ysize" value="0.5" />
