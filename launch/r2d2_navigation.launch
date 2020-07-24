@@ -34,14 +34,14 @@
     <!-- <remap from="/joint_states" to="/r2d2/joint_states" /> -->
   </node>
 
-  <node pkg="rqt_robot_steering" type="rqt_robot_steering" name="rqt_robot_steering" >
-    <param name="default_topic" value="/r2d2/ackermann_steering_controller/cmd_vel"/>
-  </node>
+  <!-- <node pkg="rqt_robot_steering" type="rqt_robot_steering" name="rqt_robot_steering" > -->
+  <!--   <param name="default_topic" value="/r2d2/ackermann_steering_controller/cmd_vel"/> -->
+  <!-- </node> -->
 
   <!-- We resume the logic in gazebo_ros package empty_world.launch, -->
   <!-- changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="worlds/empty.world"/>
+    <arg name="world_name" value="worlds/willowgarage.world"/>
    
     <arg name="paused" default="false"/>
     <arg name="use_sim_time" default="true"/>
